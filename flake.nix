@@ -21,6 +21,11 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    systems = [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
+    forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -31,7 +36,7 @@
         # > Our main nixos configuration file <
         modules = [
           ./nixos/configuration.nix
-          ./packages/common.nix
+          ./hosts/common/default.nix
         ];
       };
     };
