@@ -36,7 +36,8 @@
         # > Our main nixos configuration file <
         modules = [
           ./nixos/configuration.nix
-          ./hosts/common/default.nix
+          ./hosts/servers/chnix/configuration.nix
+          ./nixos/packages.nix
         ];
       };
     };
