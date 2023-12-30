@@ -39,6 +39,8 @@
     auto-optimise-store = true;
   };
 
+  time.timeZone = "America/New_York";
+
   users.users = {
     zach = {
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
@@ -54,6 +56,7 @@
 
   services.openssh = {
     enable = true;
+    settings.PasswordAuthentication = false;
   };
 
 }

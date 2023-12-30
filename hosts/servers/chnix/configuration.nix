@@ -13,7 +13,7 @@
     ./hardware-configuration.nix
   ];
 
-  # TODO: Set your hostname
+  # Set the hostname
   networking.hostName = "chnix";
 
   # Use the systemd-boot EFI boot loader.
