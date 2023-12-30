@@ -52,7 +52,7 @@
           ./hosts/servers/chnas01/default.nix
           ./nixos/packages.nix
         ];
-      }
+      };
       # chlendesk01 = nixpkgs.lib.nixosSystem {
       #   specialArgs = {inherit inputs outputs;};
       #   # > Our main nixos configuration file <
