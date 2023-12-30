@@ -12,12 +12,17 @@
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
+    # Disko declarative partioning
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    disko,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -36,10 +41,27 @@
         # > Our main nixos configuration file <
         modules = [
           ./nixos/configuration.nix
-          ./hosts/servers/chnix/configuration.nix
+          ./hosts/servers/chnix/default.nix
           ./nixos/packages.nix
         ];
       };
+      chnas01 = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./nixos/configuration.nix
+          ./hosts/servers/chnas01/default.nix
+          ./nixos/packages.nix
+        ];
+      }
+      # chlendesk01 = nixpkgs.lib.nixosSystem {
+      #   specialArgs = {inherit inputs outputs;};
+      #   # > Our main nixos configuration file <
+      #   modules = [
+      #     ./nixos/configuration.nix
+      #     ./hosts/desktops/chlendesk01/default.nix
+      #     ./nixos/packages.nix
+      #   ];
+      # };
     };
 
     # Standalone home-manager configuration entrypoint
