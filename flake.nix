@@ -22,7 +22,6 @@
     self,
     nixpkgs,
     home-manager,
-    disko,
     ...
   } @ inputs: let
     inherit (self) outputs;
