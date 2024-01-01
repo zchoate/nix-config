@@ -7,6 +7,8 @@
     git
     jq
     wget
+    # For LUKS setup
+    cryptsetup
   ];
 
 }
