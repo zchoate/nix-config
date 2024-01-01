@@ -21,7 +21,7 @@
     };
     luks.devices."luks-nvme1n1" = {
       device = "/dev/nvme1n1";
-      keyFile = "root/keyfile";
+      keyFile = "/root/keyfile";
       allowDiscards = true;
     };
   };
