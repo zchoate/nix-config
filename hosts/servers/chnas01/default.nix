@@ -5,6 +5,7 @@
   lib,
   config,
   pkgs,
+  disko,
   ...
 }: {
   # You can import other NixOS modules here
