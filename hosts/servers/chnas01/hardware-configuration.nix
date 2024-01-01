@@ -24,7 +24,7 @@
       keyFile = "root/keyfile";
       allowDiscards = true;
     };
-  }
+  };
 
   fileSystems."/" =
     { device = "/dev/disk/by-label/NIXROOT";
