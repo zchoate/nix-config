@@ -16,13 +16,13 @@
   boot.initrd = {
     luks.devices."luks-nvme0n1" = {
       device = "/dev/nvme0n1";
-      keyFile = "/root/keyfile";
+      keyFile = "/mnt-root/root/keyfile";
       allowDiscards = true;
       fallbackToPassword = true;
     };
     luks.devices."luks-nvme1n1" = {
       device = "/dev/nvme1n1";
-      keyFile = "/root/keyfile";
+      keyFile = "/mnt-root/root/keyfile";
       allowDiscards = true;
       fallbackToPassword = true;
     };
@@ -42,12 +42,7 @@
     { device = "/dev/disk/by-uuid/90753f73-5f8f-4a9a-8a67-d9922099e95e";
       fsType = "btrfs";
       options = ["compress=zstd" "noatime"];
-      encrypted = {
-        enable = true;
-        keyFile = "/root/keyfile";
-        blkDev = "/dev/luks-nvme0n1";
-        label = "luks-nvme0n1";
-      };
+      depends = ["/"];
     };
 
   swapDevices = [ ];
