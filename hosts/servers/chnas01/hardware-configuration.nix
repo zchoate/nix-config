@@ -40,7 +40,7 @@
     { device = "/dev/disk/by-uuid/90753f73-5f8f-4a9a-8a67-d9922099e95e";
       fsType = "btrfs";
       options = ["compress=zstd" "noatime"];
-    }
+    };
 
   swapDevices = [ ];
 
