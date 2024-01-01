@@ -11,11 +11,11 @@
   imports = [
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-
-    disko.devices = import ./disko.nix {
-      disks = [ "/dev/nvme0n1" ];
-    };
   ];
+
+  disko.devices = import ./disko.nix {
+    disks = [ "/dev/nvme0n1" ];
+  };
 
   # Set the hostname
   networking.hostName = "chnas01";
