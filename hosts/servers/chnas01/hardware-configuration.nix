@@ -46,6 +46,7 @@
         enable = true;
         keyFile = "/root/keyfile";
         blkDev = "/dev/luks-nvme0n1";
+        label = "luks-nvme0n1";
       };
     };
 
