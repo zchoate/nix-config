@@ -13,20 +13,20 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  boot.initrd = {
-    luks.devices."luks-nvme0n1" = {
-      device = "/dev/nvme0n1";
-      keyFile = "/mnt-root/root/keyfile";
-      allowDiscards = true;
-      fallbackToPassword = true;
-    };
-    luks.devices."luks-nvme1n1" = {
-      device = "/dev/nvme1n1";
-      keyFile = "/mnt-root/root/keyfile";
-      allowDiscards = true;
-      fallbackToPassword = true;
-    };
-  };
+  # boot.initrd = {
+  #   luks.devices."luks-nvme0n1" = {
+  #     device = "/dev/nvme0n1";
+  #     keyFile = "/mnt-root/root/keyfile";
+  #     allowDiscards = true;
+  #     fallbackToPassword = true;
+  #   };
+  #   luks.devices."luks-nvme1n1" = {
+  #     device = "/dev/nvme1n1";
+  #     keyFile = "/mnt-root/root/keyfile";
+  #     allowDiscards = true;
+  #     fallbackToPassword = true;
+  #   };
+  # };
 
   fileSystems."/" =
     { device = "/dev/disk/by-label/NIXROOT";
@@ -43,7 +43,20 @@
       fsType = "btrfs";
       options = ["compress=zstd" "noatime"];
       depends = ["/"];
+      encrypted = {
+        enable = true;
+        label = "data-00";
+        blkDev = "/dev/nvme0n1";
+        keyFile = "/root/keyfile";
+      };
     };
+
+  # fileSystems."/data/data-00" =
+  #   { device = "/dev/disk/by-uuid/90753f73-5f8f-4a9a-8a67-d9922099e95e";
+  #     fsType = "btrfs";
+  #     options = ["compress=zstd" "noatime"];
+  #     depends = ["/"];
+  #   };
 
   swapDevices = [ ];
 
