@@ -47,7 +47,7 @@
         enable = true;
         label = "data-00";
         blkDev = "/dev/nvme0n1";
-        keyFile = "/root/keyfile";
+        keyFile = "/sysroot/root/keyfile";
       };
     };
 
