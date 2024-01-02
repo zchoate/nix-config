@@ -38,18 +38,18 @@
       fsType = "vfat";
     };
 
-  fileSystems."/data/data-00" =
-    { device = "/dev/disk/by-uuid/90753f73-5f8f-4a9a-8a67-d9922099e95e";
-      fsType = "btrfs";
-      options = ["compress=zstd" "noatime"];
-      depends = ["/"];
-      encrypted = {
-        enable = true;
-        label = "data-00";
-        blkDev = "/dev/nvme0n1";
-        keyFile = "/sysroot/root/keyfile";
-      };
-    };
+  # fileSystems."/data/data-00" =
+  #   { device = "/dev/disk/by-uuid/90753f73-5f8f-4a9a-8a67-d9922099e95e";
+  #     fsType = "btrfs";
+  #     options = ["compress=zstd" "noatime"];
+  #     depends = ["/"];
+  #     encrypted = {
+  #       enable = true;
+  #       label = "data-00";
+  #       blkDev = "/dev/nvme0n1";
+  #       keyFile = "/sysroot/root/keyfile";
+  #     };
+  #   };
 
   # fileSystems."/data/data-00" =
   #   { device = "/dev/disk/by-uuid/90753f73-5f8f-4a9a-8a67-d9922099e95e";
