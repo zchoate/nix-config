@@ -13,6 +13,16 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  boot.supportedFilesystems = [
+    "ext4"
+    "btrfs"
+    "xfs"
+    "ntfs"
+    "fat"
+    "vfat"
+    "cifs" # mount windows share
+  ];
+
   # boot.initrd = {
   #   luks.devices."luks-nvme0n1" = {
   #     device = "/dev/nvme0n1";
