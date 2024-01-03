@@ -23,12 +23,12 @@
           prefixLength = 24;
         }
       ];
-      defaultGateway = "192.168.8.1";
-      nameservers = [
-        "192.168.8.100"
-      ];
     };
     interfaces.enp3s0.useDHCP = lib.mkDefault true;
+    defaultGateway = "192.168.8.1";
+    nameservers = [
+      "192.168.8.100"
+    ];
   };
 
   # Use the systemd-boot EFI boot loader.
