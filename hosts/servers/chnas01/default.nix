@@ -13,12 +13,37 @@
     ./hardware-configuration.nix
   ];
 
-  # Set the hostname
-  networking.hostName = "chnas01";
+  networking = {
+    hostName = "chnas01";
+    interfaces.enp2s0 = {
+      useDHCP = false;
+      ipv4.addresses = [
+        {
+          address = "192.168.8.41";
+          prefixLength = 24;
+        }
+      ];
+      defaultGateway = "192.168.8.1";
+      nameservers = [
+        "192.168.8.100"
+      ];
+    };
+    interfaces.enp3s0.useDHCP = lib.mkDefault true;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.supportedFilesystems = [
+    "ext4"
+    "btrfs"
+    "xfs"
+    "ntfs"
+    "fat"
+    "vfat"
+    "cifs" # mount windows share
+  ];
 
   environment.etc.crypttab = {
     enable = true;
