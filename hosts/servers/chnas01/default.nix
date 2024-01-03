@@ -28,6 +28,13 @@
     '';
   };
 
+  fileSystems."/data/data-00" = { 
+    device = "/dev/disk/by-uuid/90753f73-5f8f-4a9a-8a67-d9922099e95e";
+    fsType = "btrfs";
+    options = ["compress=zstd" "noatime"];
+    depends = ["/dev/mapper/luks-nvme0n1"];
+  };
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";
 }
