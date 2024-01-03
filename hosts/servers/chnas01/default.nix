@@ -20,6 +20,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  environment.etc.crypttab = {
+    enable = true;
+    text = ''
+      luks-nvme0n1 /dev/nvme0n1 /root/keyfile luks
+      luks-nvme1n1 /dev/nvme1n1 /root/keyfile luks
+    '';
+  }
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";
 }
